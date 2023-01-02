@@ -1,14 +1,20 @@
 {
   "compilerOptions": {
     "outDir": "dist",
-    "target": "es2022",                
+    "target": "es2022",
+    "module": "commonjs",                     
     "esModuleInterop": true,                                    
     "forceConsistentCasingInFileNames": true,            
     "skipLibCheck": true,
-    "moduleResolution": "Node" 
+    "moduleResolution": "Node",
+    "typeRoots": ["node_modules/@types"],
+    "types": [
+      "node",
+      "jest"
+    ]
   },
   "include": [
-    "src/**/*.ts",
-    "tests/*.ts"
+    "src/**/*",
+    "**/*.test.ts"
   ]
 }
