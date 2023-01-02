@@ -15,4 +15,20 @@ model Player {
   id Int @id @default(autoincrement())
   username String @unique
   password String
+  challengers Match[] @relation("player")
+  opponents Match[] @relation("opponent")
+
+  @@map("players")
+}
+
+model Match {
+  id Int @id @default(autoincrement())
+  playerId Int
+  opponentId Int
+  againstLuna Boolean
+  outcome String
+  challengers Player @relation("player", fields: [playerId], references: [id])
+  opponents Player @relation("opponent", fields: [opponentId], references: [id])
+
+  @@map("matchs")
 }
