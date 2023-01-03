@@ -33,6 +33,40 @@ describe("POST /sign-up", () => {
         expect(result.status).toBe(409);
         expect(result.text).toBe("Username already registered!");
     });
+
+    it("should successfully login a registered user", async () => {
+        const player = await __playerFactory();
+
+        await supertest(app).post("/sign-up").send(player);
+
+        const result = await supertest(app).post("/sign-in").send(player);
+
+        expect(result.status).toBe(200);
+        expect(result.text).not.toBeNull();
+    });
+
+    it("should fail to login a unregistered user", async () => {
+        const player = await __playerFactory();
+
+        const result = await supertest(app).post("/sign-in").send(player);
+
+        expect(result.status).toBe(404);
+        expect(result.text).toBe("Username not registered!");
+    });
+
+    it("should fail to login an user with wrong password", async () => {
+        const player = await __playerFactory();
+
+        await supertest(app).post("/sign-up").send(player);
+
+        const result = await supertest(app).post("/sign-in").send({
+            username: player.username,
+            password: "wrongpassword"
+        });
+
+        expect(result.status).toBe(401);
+        expect(result.text).toBe("Wrong password!");
+    });
 });
 
 afterAll( async () => {

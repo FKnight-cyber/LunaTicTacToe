@@ -3,6 +3,7 @@ import authRepository from "../../src/repositories/authRepository";
 import authServices from "../../src/services/authService";
 import { Player } from "@prisma/client";
 import __playerFactory from "../factories/playerFactory";
+import utils from "../../src/utils/authUtils";
 
 jest.mock("../../src/repositories/authRepository.ts");
 
@@ -41,6 +42,30 @@ describe("Authentication service suit tests", () => {
       status:409,
       message: "Username already registered!"
     });
+  });
+
+  it("should successfully login a registered user", async () => {
+    const player = await __playerFactory();
+
+    jest.spyOn(authRepository, "findUser").mockImplementationOnce(async ():Promise<Player> => {
+      return {
+        id:111,
+        username: player.username,
+        password: player.password
+      };
+    });
+
+    jest.spyOn(utils, "decrypt").mockImplementationOnce(():any => {
+      return true;
+    });
+
+    jest.spyOn(utils, "generateUserToken").mockImplementationOnce(():any => {
+        return "minhatoken";
+    });
+
+    const result = await authServices.login(player);
+
+    expect(result).toBe("minhatoken");
   });
 });
 
