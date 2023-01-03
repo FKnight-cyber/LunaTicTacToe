@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-const Container = styled.div`
+interface Props {
+  loading: boolean
+}
+
+const Container = styled.div<Props>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,14 +40,29 @@ const Container = styled.div`
     input {
       width: 280px;
       height: 42px;
+      padding-left: 6px;
+
+      font-weight: 400;
+      font-size: 20px;
     }
 
     button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       width: 200px;
-      background-color: #4385F2;
+      background-color: ${props => props.loading ? "#ffffff" : "#4385F2"};
       color: #ffffff;
       height: 30px;
       margin-bottom: 10px;
+      border: ${props => props.loading ? "0.2rem solid #fff" : "default"};
+      border-radius: ${props => props.loading ? "2rem" : "default"};
+      padding: ${props => props.loading ? "0.4em" : "default"};
+      box-shadow: ${props => props.loading ? 
+      "0 0 .2rem #fff,0 0 .2rem #fff,0 0 2rem #bc13fe,0 0 0.8rem #bc13fe,0 0 2.8rem #bc13fe,inset 0 0 1.3rem #bc13fe" 
+      : 
+      "default"
+      }; 
 
       cursor: pointer;
     }

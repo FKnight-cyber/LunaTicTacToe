@@ -3,7 +3,7 @@ import loginImg from "../../assets/LunaLogin.png";
 
 export default function Login() {
   return(
-    <Container>
+    <Container loading={false}>
       <img src={loginImg} alt="" />
       <div className="pageInfo">
         <form>

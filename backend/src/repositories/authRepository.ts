@@ -6,7 +6,7 @@ async function insert(data:authData) {
 };
 
 async function findUser(username:string) {
-  return await prisma.player.findUnique({where:{username}});
+  return await prisma.player.findFirst({where:{username}});
 }
 
 const authRepository = {
