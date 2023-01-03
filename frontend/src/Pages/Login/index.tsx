@@ -65,20 +65,22 @@ export default function Login() {
       <div className="pageInfo">
         <form onSubmit={signIn}>
           <input 
+            data-cy="login-username"
             type="text" 
             value={username}
             onChange={e => setUsername(e.target.value)}
             placeholder="Username"
             required
           />
-          <input 
+          <input
+            data-cy="login-pass" 
             type="password" 
             value={password}
             onChange={e => setPassword(e.target.value)}
             placeholder="Password"
             required
           />
-          <button type="submit">
+          <button type="submit" data-cy="submit-login">
           {
               load ? 
                 <Hearts 
@@ -95,7 +97,7 @@ export default function Login() {
             }
           </button>
         </form>
-        <Link to="/sign-up" style={{color:"inherit", textAlign:"center"}}>
+        <Link to="/sign-up" style={{color:"inherit", textAlign:"center"}} data-cy="cy-register">
           <h3>Don't have an account?</h3>
           <h3>Register now</h3>
         </Link>

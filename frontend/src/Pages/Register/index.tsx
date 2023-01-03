@@ -60,6 +60,7 @@ export default function Register() {
       <div className="pageInfo">
         <form onSubmit={register}>
           <input 
+            data-cy="cy-username"
             type="text" 
             value={username}
             placeholder="Username"
@@ -67,13 +68,14 @@ export default function Register() {
             required
           />
           <input 
+            data-cy="cy-password"
             type="password" 
             value={password}
             placeholder="Password"
             onChange={e => setPassword(e.target.value)}
             required
           />
-          <button type="submit">
+          <button type="submit" data-cy="cy-submit-register">
             {
               load ? 
                 <Hearts 
