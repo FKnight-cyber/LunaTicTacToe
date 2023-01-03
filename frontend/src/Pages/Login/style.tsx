@@ -72,6 +72,12 @@ const Container = styled.div<Props>`
     }
   }
 
+  @media only screen and (min-width: 500px)  {
+    img{
+    height: 50%;
+    }
+  }
+
   @media only screen and (min-width: 940px)  {
     flex-direction: row;
     padding-right: 40px;
