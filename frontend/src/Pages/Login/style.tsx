@@ -25,9 +25,11 @@ const Container = styled.div<Props>`
   }
 
   img{
-    width: 300px;
-    height: 300px;
+    width: 90%;
+    max-width: 580px;
+    height: 44%;
     object-fit: cover;
+    margin-bottom: 30px;
   }
 
   form {
@@ -36,9 +38,11 @@ const Container = styled.div<Props>`
     justify-content: space-around;
     align-items: center;
     height: 150px;
+    width: 9  0%;
+    max-width: 280px;
     
     input {
-      width: 280px;
+      width: 100%;
       height: 42px;
       padding-left: 6px;
 
@@ -50,7 +54,7 @@ const Container = styled.div<Props>`
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 200px;
+      width: 86%;
       background-color: ${props => props.loading ? "#ffffff" : "#4385F2"};
       color: #ffffff;
       height: 30px;
@@ -71,11 +75,6 @@ const Container = styled.div<Props>`
   @media only screen and (min-width: 940px)  {
     flex-direction: row;
     padding-right: 40px;
-
-    img {
-      height: 500px;
-      width: 50%;
-    }
   }
 
   @media only screen and (min-width: 1160px)  {
