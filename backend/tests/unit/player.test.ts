@@ -16,8 +16,8 @@ describe("Authentication service suit tests", () => {
   it("should successfully register a new player", async () => {
     const player = await __playerFactory();
 
-    jest.spyOn(authRepository, "findUser").mockImplementationOnce(():any => {
-      return false;
+    jest.spyOn(authRepository, "findUser").mockImplementationOnce(():Promise<Player> => {
+      return null;
     });
 
     await authServices.register(player);
@@ -55,11 +55,11 @@ describe("Authentication service suit tests", () => {
       };
     });
 
-    jest.spyOn(utils, "decrypt").mockImplementationOnce(():any => {
+    jest.spyOn(utils, "decrypt").mockImplementationOnce(():boolean => {
       return true;
     });
 
-    jest.spyOn(utils, "generateUserToken").mockImplementationOnce(():any => {
+    jest.spyOn(utils, "generateUserToken").mockImplementationOnce(():string => {
         return "minhatoken";
     });
 
