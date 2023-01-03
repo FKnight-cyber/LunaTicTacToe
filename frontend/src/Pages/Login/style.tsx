@@ -14,6 +14,10 @@ const Container = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    h3 {
+      cursor: pointer;
+    }
   }
 
   img{
@@ -40,6 +44,8 @@ const Container = styled.div`
       color: #ffffff;
       height: 30px;
       margin-bottom: 10px;
+
+      cursor: pointer;
     }
   }
 
